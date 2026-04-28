@@ -1,3 +1,7 @@
+branches:
+  only:
+    - main
+    
 node_js:
   - 22
 
@@ -17,4 +21,4 @@ script:
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push 77159449420/udagram-api-feeD
+  - docker push 77159449420/udagram-api-feed
