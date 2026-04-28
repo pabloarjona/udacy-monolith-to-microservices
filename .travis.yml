@@ -8,7 +8,7 @@ install:
   - echo "nothing needs to be installed"
 
 before_script:
-  - echo "no tests"
+  - echo "no tests "
 
 script: 
   - docker --version #print the version for logging
