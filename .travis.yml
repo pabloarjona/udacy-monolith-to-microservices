@@ -1,8 +1,0 @@
-language: bash
-
-branches:
-  only:
-    - main
-
-script:
-  - echo "Travis funcionando"
