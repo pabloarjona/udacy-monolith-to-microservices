@@ -51,6 +51,6 @@ jobs:
       # === Build & Push udagram-reverseproxy ===
       - name: Build udagram-reverseproxy
         run: |
-          docker build -t udagram-reverseproxy ./udagram-reverseproxy
-          docker tag udagram-reverseproxy ${{ secrets.DOCKER_USERNAME }}/udagram-reverseproxy:$TAG
-          docker push ${{ secrets.DOCKER_USERNAME }}/udagram-reverseproxy:$TAG
+          docker build -t reverseproxy ./udagram-reverseproxy
+          docker tag reverseproxy ${{ secrets.DOCKER_USERNAME }}/reverseproxy:$TAG
+          docker push ${{ secrets.DOCKER_USERNAME }}/reverseproxy:$TAG
