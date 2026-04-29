@@ -32,3 +32,25 @@ jobs:
           docker build -t udagram-api-feed ./udagram-api-feed
           docker tag udagram-api-feed ${{ secrets.DOCKER_USERNAME }}/udagram-api-feed:$TAG
           docker push ${{ secrets.DOCKER_USERNAME }}/udagram-api-feed:$TAG
+
+      # === Build & Push udagram-api-user ===
+      - name: Build udagram-api-user
+        run: |
+          echo "Tag actual: $TAG"
+          docker build -t udagram-api-user ./udagram-api-user
+          docker tag udagram-api-user ${{ secrets.DOCKER_USERNAME }}/udagram-api-user:$TAG
+          docker push ${{ secrets.DOCKER_USERNAME }}/udagram-api-user:$TAG
+
+      # === Build & Push udagram-frontend ===
+      - name: Build udagram-frontend
+        run: |
+          docker build -t udagram-frontend ./udagram-frontend
+          docker tag udagram-frontend ${{ secrets.DOCKER_USERNAME }}/udagram-frontend:$TAG
+          docker push ${{ secrets.DOCKER_USERNAME }}/udagram-frontend:$TAG
+
+      # === Build & Push udagram-reverseproxy ===
+      - name: Build udagram-reverseproxy
+        run: |
+          docker build -t udagram-reverseproxy ./udagram-reverseproxy
+          docker tag udagram-reverseproxy ${{ secrets.DOCKER_USERNAME }}/udagram-reverseproxy:$TAG
+          docker push ${{ secrets.DOCKER_USERNAME }}/udagram-reverseproxy:$TAG
