@@ -8,6 +8,9 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    
+    env: 
+      TAG: ${{ github.run_number }}
 
     steps:
       - name: Checkout repository
@@ -21,3 +24,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      # === Build & Push udagram-api-feed ===
+      - name: Build udagram-api-feed
+        run: |
+          echo "Tag actual: $TAG"
+          docker build -t udagram-api-feed ./udagram-api-feed
+          docker tag udagram-api-feed ${{ secrets.DOCKER_USERNAME }}/udagram-api-feed:$TAG
+          docker push ${{ secrets.DOCKER_USERNAME }}/udagram-api-feed:$TAG
