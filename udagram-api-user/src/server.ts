@@ -17,7 +17,8 @@ import { V0_USER_MODELS} from './controllers/v0/model.index';
   console.debug("Squelize sync OK")
   const app = express();
   const port = process.env.PORT || 8080;
-
+  console.log("port used", port)
+  console.log("CONF URL used", config.url)
   app.use(bodyParser.json());
 
   // We set the CORS origin to * so that we don't need to
@@ -41,6 +42,10 @@ import { V0_USER_MODELS} from './controllers/v0/model.index';
     res.send( '/api/v0/' );
   } );
 
+  app.get('/health', async (req, res) => {
+    res.status(200).send('OK');
+    //res.send('OK');
+  });
 
   // Start the Server
   app.listen( port, () => {

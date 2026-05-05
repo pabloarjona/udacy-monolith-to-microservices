@@ -41,9 +41,14 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
     res.send( '/api/v0/' );
   } );
 
+  app.get('/health', async (req, res) => {
+    res.status(200).send('OK');
+    //res.send('OK');
+  });
 
   // Start the Server
-  app.listen( port, () => {
+  app.listen( port, () => {  
+    console.log( 'server running on port' + port);
     console.log( `server running ${config.url}` );
     console.log( `press CTRL+C to stop server` );
   } );

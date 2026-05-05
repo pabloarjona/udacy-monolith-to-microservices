@@ -4,13 +4,12 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { GetObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
 import { config } from './config/config';
 
-// Configure AWS
-const credentials = fromIni({ profile: config.aws_profile });
-
-// Create S3 client
-export const s3Client = new S3Client({
-  region: config.aws_region,
-  credentials: credentials,
+const s3Client = new S3Client({
+  region: process.env.AWS_REGION,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  }
 });
 
 // Generates an AWS signed URL for retrieving objects
